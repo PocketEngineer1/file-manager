@@ -204,6 +204,42 @@ class Rectangle(Element):
     def handle_event(self, event):
         pass
 
+# class ScrollArea(Element):
+#     def __init__(self, name, x, y, width, height, scroll_speed=5, group=None):
+#         super().__init__(name, x, y, width, height, group)
+#         self.scroll_y = 0
+#         self.scroll_speed = scroll_speed
+#         self.content_height = self.rect.height
+#         self.visible_area_height = self.rect.height
+#         self.elements = []
+
+#     def draw(self, surface):
+#         for i, item in enumerate(self.elements):
+#             if i * 35 > self.scroll_y + self.visible_area_height:
+#                 # Skip drawing items below the visible area
+#                 break
+#             if (i + 1) * 35 >= self.scroll_y:
+#                 # Only draw items that are partially or fully visible
+#                 item_y = (i * 35) - self.scroll_y
+#                 # Draw your file display elements here using the item_y as the y-coordinate
+#                 item.rect.y = item_y
+#                 item.draw(surface)
+
+#     def handle_event(self, event):
+#         if event.type == pygame.KEYDOWN:
+#             keys = pygame.key.get_pressed()
+#             if keys[pygame.K_UP]:
+#                 self.scroll_y += self.scroll_speed
+#             if keys[pygame.K_DOWN]:
+#                 self.scroll_y -= self.scroll_speed
+
+#             # Clamp scroll position within the content range
+#             self.max_scroll_y = self.content_height - self.visible_area_height
+#             self.scroll_y = max(0, min(self.scroll_y, self.max_scroll_y))
+    
+#     def add_elements(self, elements):
+#         self.elements = elements
+
 class Image(Element):
     def __init__(self, name, x, y, image_path, group=None, scale=None):
         self.image = pygame.image.load(image_path)
